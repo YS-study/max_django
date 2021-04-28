@@ -1,13 +1,18 @@
 from django import forms
-from .models import Post, Comment
+from .models import Post, Question, Answer
 
 class PostForm(forms.ModelForm):
-    password = forms.CharField(widget=forms.PasswordInput)
     class Meta:
         model = Post
         fields = '__all__'
 
-class CommentForm(forms.ModelForm):
+class QuestionForm(forms.ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput)
     class Meta:
-        model = Comment
+        model = Question
+        fields = '__all__'
+
+class AnswerForm(forms.ModelForm):
+    class Meta:
+        model = Answer
         fields = '__all__'
