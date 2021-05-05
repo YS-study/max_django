@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>index</h1>
+
+{% for machine in machines %}
+  <p>이름 : {{ machine.title }}</p>
+  <p>내용 : {{ machine.content }}</p>  
+
+{% endfor %}
+
+
+{% endblock content %}
