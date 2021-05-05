@@ -15,7 +15,7 @@ urlpatterns = [
     path('qna/<int:pk>/update/', views.qna_update, name='qna_update'),
     path('qna/<int:pk>/delete/', views.qna_delete, name='qna_delete'),
 
-    path('qna/<int:post_pk>/comments/', views.comments_create, name='comments_create'),
-    path('qna/<int:post_pk>/comments/<int:comment_pk>/update/', views.comments_update, name='comments_update'),
-    path('qna/<int:post_pk>/comments/<int:comment_pk>/delete/', views.comments_delete, name='comments_delete'),
+    path('qna/<int:question_pk>/answers/', views.answers_create, name='answers_create'),
+    path('qna/<int:question_pk>/answers/<int:answer_pk>/update/', views.answers_update, name='answers_update'),
+    path('qna/<int:question_pk>/answers/<int:answer_pk>/delete/', views.answers_delete, name='answers_delete'),
 ]

@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+qna 디테일
+
+제목
+{{question.title}}
+
+내용
+{{question.content}}
+
+{% if request.user.is_authenticated %}
+  <form action="{% url 'board:answers_create' question.pk %}" method="POST">
+    {% csrf_token %}
+    {{answer_form}}
+    <button>제출</button>
+  </form>
+{% endif %}
+
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">번호</th>
+      <th scope="col">제목</th>
+      <th scope="col">등록일</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for answer in answers %}
+      <tr>
+        <th scope="row">{{ answer.pk }}</th>
+        <td>{{ answer.content }}</td>
+        <td>{{ answer.created_at }}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+
+{% endblock content %}

@@ -73,29 +73,89 @@ def notice_delete(request, pk):
 
 
 def qna(request):
-    pass
+    questions = Question.objects.order_by('-pk')
+    context = {
+        'questions': questions
+    }
+    return render(request, 'qna/index.html', context)
+
 # C
+@require_http_methods(['GET', 'POST'])
 def qna_create(request):
-    pass
+    if request.method == 'POST':
+        form = QuestionForm(request.POST)
+        if form.is_valid():
+            question = form.save()
+            return redirect('board:qna_detail', question.pk)
+    else:
+        form = QuestionForm()
+    context = {
+        'form': form
+    }
+    return render(request, 'qna/create_update.html', context)
+
+
 # R
 def qna_detail(request, pk):
-    pass
+    question = get_object_or_404(Question, pk=pk)
+    answer_form = AnswerForm()
+    answers = question.answer_set.all()
+    context = {
+        'question': question,
+        'answer_form': answer_form,
+        'answers': answers,
+    }
+    return render(request, 'qna/detail.html', context)
+
 # U 
+@require_http_methods(['GET', 'POST'])
 def qna_update(request, pk):
-    pass
+    question = get_object_or_404(Question, pk=pk)
+    if request.method == 'POST':
+        form = QuestionForm(request.POST, instance=question)
+        if form.is_valid():
+            question = form.save()
+            return redirect('board:qna_detail', question.pk)
+    else:
+        form = QuestionForm(instance=question)
+    context = {
+        'form': form
+    }
+    return render(request, 'qna/create_update.html', context)
+
+
 # D
+@require_POST
 def qna_delete(request, pk):
-    pass
+    question = get_object_or_404(Question, pk=pk)
+    question.delete()
+    return redirect('board:qna')
 
 
 
 
 # R
-def comments_create(request, post_pk):
-    pass
+@require_POST
+@login_required
+def answers_create(request, question_pk):
+    question = get_object_or_404(Question, pk=question_pk)
+    answer_form = AnswerForm(request.POST)
+    if answer_form.is_valid():
+        answer = answer_form.save(commit=False)
+        answer.question = question
+        answer.user = request.user
+        answer.save()
+    return redirect('board:qna_detail', question_pk)
+
+
 # U 
-def comments_update(request, post_pk, comment_pk):
+def answers_update(request, question_pk, answer_pk):
     pass
+
 # D
-def comments_delete(request, post_pk, comment_pk):
-    pass
+@require_POST
+@login_required
+def answers_delete(request, question_pk, answer_pk):
+    answer = get_object_or_404(Answer, pk=answer_pk)
+    answer.delete()
+    return redirect('board:qna_detail', question_pk)

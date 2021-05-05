@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+qna 페이지 입니다 
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">번호</th>
+      <th scope="col">제목</th>
+      <th scope="col">등록일</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for question in questions %}
+      <tr>
+        <th scope="row">{{ question.pk }}</th>
+        <td>{{ question.title }}</td>
+        <td>{{ question.created_at }}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+
+{% endblock content %}
