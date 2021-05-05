@@ -124,6 +124,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# css용 스테틱 파일 경로 추가
+STATICFILES_DIRS = [
+    BASE_DIR / 'pjt' / 'static'
+]
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
