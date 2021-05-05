@@ -10,7 +10,8 @@ from django.contrib.auth.decorators import login_required
 def notice(request):
     posts = Post.objects.order_by('-pk')
     context = {
-        'posts': posts
+        'posts': posts,
+        'menu': '공지사항'
     }
     return render(request, 'notice/index.html', context)
 
@@ -27,6 +28,7 @@ def notice_create(request):
         form = PostForm()
     context = {
         'form': form,
+        'menu': '공지사항',
     }
     return render(request, 'notice/create_update.html', context)
 
@@ -35,6 +37,7 @@ def notice_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
     context = {
         'post': post,
+        'menu': '공지사항',
     }
     return render(request, 'notice/detail.html', context)
 
@@ -56,6 +59,7 @@ def notice_update(request, pk):
     context = {
         'form': form,
         'post': post,
+        'menu': '공지사항',
     }
     return render(request, 'notice/create_update.html', context)
 
@@ -75,7 +79,8 @@ def notice_delete(request, pk):
 def qna(request):
     questions = Question.objects.order_by('-pk')
     context = {
-        'questions': questions
+        'questions': questions,
+        'menu': '1:1 문의'
     }
     return render(request, 'qna/index.html', context)
 
@@ -90,7 +95,8 @@ def qna_create(request):
     else:
         form = QuestionForm()
     context = {
-        'form': form
+        'form': form,
+        'menu': '1:1 문의'
     }
     return render(request, 'qna/create_update.html', context)
 
@@ -104,6 +110,7 @@ def qna_detail(request, pk):
         'question': question,
         'answer_form': answer_form,
         'answers': answers,
+        'menu': '1:1 문의',
     }
     return render(request, 'qna/detail.html', context)
 
@@ -119,7 +126,8 @@ def qna_update(request, pk):
     else:
         form = QuestionForm(instance=question)
     context = {
-        'form': form
+        'form': form,
+        'menu': '1:1 문의',
     }
     return render(request, 'qna/create_update.html', context)
 

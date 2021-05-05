@@ -2,13 +2,18 @@
 
 {% block content %}
 
-qna 디테일
+{# title #}
+<div class="d-flex justify-content-between div-border px-4 py-2">
+  <h1>{{question.title}}</h1>
+  <small>{{ post.created_at|date:'Y.m.d H:i' }}</small>
+</div>
 
-제목
-{{question.title}}
-
-내용
-{{question.content}}
+{# content #}
+<div class='p-5'>
+  <p>
+    {{question.content}}
+  </p>
+</div>
 
 {% if request.user.is_authenticated %}
   <form action="{% url 'board:answers_create' question.pk %}" method="POST">

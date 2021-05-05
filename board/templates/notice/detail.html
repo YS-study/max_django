@@ -1,10 +1,23 @@
 {% extends 'base.html' %}
 
 {% block content %}
+ 
+{# title #}
+<div class="d-flex justify-content-between div-border px-4 py-2">
+  <h1>{{ post.title }}</h1>
+  <small>{{ post.created_at|date:'Y.m.d H:i' }}</small>
+</div>
 
-detail페이지
-{{ post.title }}
+{# content #}
+<div class='p-5'>
+  <p>
+    {{ post.content }}
+  </p>
+</div>
 
-{{ post.content }}
+{# content 끝 & 목록 버튼 #}
+<div class="d-flex justify-content-center">
+  <a class="btn btn-primary" href="{% url 'board:notice' %}" role="button">목록</a>
+</div>
 
 {% endblock content %}
