@@ -21,4 +21,6 @@ urlpatterns = [
     # path('accounts/', include('accounts.urls')),
     path('board/', include('board.urls')),
     # path('machines/', include('machines.urls')),
+    path('machines/', include('machines.urls')),
+    
 ]
