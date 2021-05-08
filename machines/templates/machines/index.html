@@ -1,15 +1,22 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>index</h1>
+<h1 class="text-center mb-5">index</h1>
 
-{% for machine in machines %}
-  <p>이름 : {{ machine.title }}</p>
-  <div>
-    <img src="" alt="">
-  </div>  
+<div class="row">
+  {% for machine in machines %}
+  <div class="col-4">
+    <div class="d-flex flex-column bg-warning py-3 gy-4">
+      <div class="d-flex justify-content-center">
+        <img src="https://picsum.photos/200/200" alt="">
+      </div>
+      <a href="#" class="text-decoration-none">
+        <p class="text-center mt-3">{{ machine.title }}</p>
+      </a>
+    </div>  
+  </div>
 
-{% endfor %}
-
+  {% endfor %}
+</div>
 
 {% endblock content %}
