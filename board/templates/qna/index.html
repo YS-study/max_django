@@ -23,8 +23,9 @@
 </table>
 
 {# pagination #}
-<nav aria-label="Page navigation example">
-  <ul class="pagination justify-content-center">
+<nav aria-label="Page navigation example" class="d-flex justify-content-between">
+  <div></div>
+  <ul class="pagination mb-0">
     {% if questions.has_previous %}
         <li class="page-item">
           <a class="page-link" href="?page={{ questions.previous_page_number }}">이전 페이지</a>
@@ -46,6 +47,7 @@
       </li>
     {% endif %}
   </ul>
+  <button type="button" class="btn btn-primary"><a href="{% url 'board:qna_create'%}" class="text-decoration-none text-light">글쓰기</a></button>
 </nav>
 
 {% endblock content %}
