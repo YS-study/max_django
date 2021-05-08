@@ -4,11 +4,16 @@ from .models import Post, Question, Answer
 from .forms import PostForm, QuestionForm, AnswerForm
 from django.views.decorators.http import require_safe, require_http_methods, require_POST
 from django.contrib.auth.decorators import login_required
-
+from django.core.paginator import Paginator
 
 # 메인
 def notice(request):
     posts = Post.objects.order_by('-pk')
+    
+    paginator = Paginator(posts, 10)
+    page_number = request.GET.get('page')
+    posts = paginator.get_page(page_number)
+
     context = {
         'posts': posts,
         'menu': '공지사항'
@@ -78,6 +83,11 @@ def notice_delete(request, pk):
 
 def qna(request):
     questions = Question.objects.order_by('-pk')
+
+    paginator = Paginator(questions, 10)
+    page_number = request.GET.get('page')
+    questions = paginator.get_page(page_number)
+
     context = {
         'questions': questions,
         'menu': '1:1 문의'
