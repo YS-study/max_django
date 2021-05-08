@@ -4,13 +4,13 @@ from django.views.decorators.http import require_safe, require_http_methods, req
 from .models import Machine
 from .forms import MachineForm
 
-
 # Create your views here.
 
 def index(request):
     machines = Machine.objects.order_by('-pk')
     context = {
         'machines': machines,
+        'menu': '목공기계',
     }
     return render(request, 'machines/index.html', context)
 
@@ -26,13 +26,19 @@ def create(request):
 
     else:
         form = MachineForm()
-    context = { 'form': form }
+    context = {
+        'form': form,
+        'menu': '목공기계',
+        }
     return render(request, 'machines/create.html', context)
 
 
 def detail(request, pk):
     machine = get_object_or_404(Machine, pk=pk) 
-    context = {'machine': machine}
+    context = {
+        'machine': machine,
+        'menu': '목공기계',
+        }
     return render(request, 'machines/detail.html', context)
 
 
@@ -61,5 +67,6 @@ def update(request, pk):
     context = {
         'form': form,
         'machine': machine,
+        'menu': '목공기계',
     }
     return render(request, 'machines/update.html', context)
