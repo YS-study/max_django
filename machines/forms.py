@@ -14,8 +14,4 @@ class MachineForm(forms.ModelForm):
     pick = forms.ChoiceField(choices=PICKS)
     class Meta:
         model = Machine
-        fields = ('title', 'content',)
-
-
-
-
+        fields = ('title', 'content', 'photo',)
