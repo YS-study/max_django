@@ -12,9 +12,9 @@ class Machine(models.Model):
     title = models.CharField(max_length=100)
     content = models.TextField()
     photo = ProcessedImageField(
-        black=True,
+        blank=True,
         processors=[Thumbnail(200, 200)],
-        format='png','jpg','jpeg',
+        format='jpeg',
         options={'quality': 100},
         upload_to='%Y/%m/%d/'
     )

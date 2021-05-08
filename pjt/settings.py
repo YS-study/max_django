@@ -39,6 +39,7 @@ INSTALLED_APPS = [
 
     # 3rd party apps
     'django_seed',
+    'imagekit',
     
     # Django apps
     'django.contrib.admin',
