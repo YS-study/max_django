@@ -9,9 +9,9 @@
   <div class="col-4">
     <div class="d-flex flex-column bg-warning py-3 gy-4">
       <div class="d-flex justify-content-center">
-        <img src="{{ machine.photo.url }}" alt="img"> <!--https://picsum.photos/200/200 -->
+        <a href="{% url 'machines:detail' machine.pk %}"><img src="{{ machine.photo.url }}" alt="img"></a> <!--https://picsum.photos/200/200 -->
       </div>
-      <a href="{% url 'machines:detail' machine.pk %}" class="text-decoration-none">
+      <a href="{% url 'machines:detail' machine.pk %}" class="text-decoration-none bg-light">
         <p class="text-center mt-3">{{ machine.title }}</p>
       </a>
     </div>  

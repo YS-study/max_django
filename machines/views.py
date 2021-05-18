@@ -4,7 +4,6 @@ from django.views.decorators.http import require_safe, require_http_methods, req
 from .models import Machine
 from .forms import MachineForm
 
-# Create your views here.
 
 def index(request):
     machines = Machine.objects.order_by('-pk')
@@ -18,12 +17,12 @@ def index(request):
 @require_http_methods(['GET', 'POST'])
 def create(request):
     if request.method == 'POST':
-        form = MachineForm(request.POST)
+        form = MachineForm(request.POST, request.FILES)
         if form.is_valid():
             machine = form.save(commit=False)
+            machine.user = request.user 
             machine.save()
-            return redirect('machines:index', machine.pk)
-
+            return redirect('machines:detail', machine.pk)
     else:
         form = MachineForm()
     context = {
@@ -56,11 +55,10 @@ def update(request, pk):
     machine = get_object_or_404(Machine, pk=pk)
     
     if request.method == 'POST':
-        form = MachineForm(request.POST, instance=machine)
+        form = MachineForm(request.POST, request.FILES, instance=machine)
         if form.is_valid():
             form.save()
             return redirect('machines:detail', machine.pk)
-
     else:
         form = MachineForm(instance=machine)
 

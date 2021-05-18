@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h3>{{ machine.title }}</h3>
+  {% comment %} <h3>{{ machine.title }}</h3>
   {% if machine.photo %}
     <img src="{{ machine.photo.url }}" alt="{{ machine.photo }}">
   {% endif %}
@@ -15,5 +15,5 @@
     {% csrf_token %}
     <button class="btn btn-sm btn-secondary">삭제</button>
   </form>
-  <a href="{% url 'machines:index '%}" class="btn btn-sm btn-primary">목록으로</a>
+  <a href="{% url 'machines:index' %}" class="btn btn-sm btn-primary">목록으로</a> {% endcomment %}
 {% endblock content %}
