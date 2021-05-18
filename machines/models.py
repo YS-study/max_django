@@ -12,9 +12,8 @@ class Machine(models.Model):
     title = models.CharField(max_length=100)
     content = models.TextField()
     photo = ProcessedImageField(
-        # label='사진',
         blank=True,
-        processors=[Thumbnail(200, 200)],
+        # processors=[Thumbnail(200, 200)],
         format='jpeg',
         options={'quality': 100},
         upload_to='%Y/%m/%d/'
