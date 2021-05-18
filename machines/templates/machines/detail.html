@@ -1,19 +1,42 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h3>{{ machine.title }}</h3>
-  {% if machine.photo %}
-    <img src="{{ machine.photo.url }}" alt="{{ machine.photo }}">
-  {% endif %}
+  <div class="bg-light">
+    <h3 class="text-center">{{ machine.title }}</h3>
+    {% if machine.photo %}
+      <img src="{{ machine.photo.url }}" alt="{{ machine.photo }}">
+    {% endif %}
 
-  <div class="desc">
-    <p>{{ machine.content }}</p>
+    <div class="desc text-center">
+      <p>{{ machine.content }}</p>
+    </div>
+    <a href="{% url 'machines:update' machine.pk %}" class="btn btn-sm btn-primary">수정</a>  
+    <button class="btn btn-sm btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      삭제
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">...</h5>
+            <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            게시글을 삭제하시겠습니까?
+          </div>
+          <div class="modal-footer">
+            <form action="{% url 'machines:delete' machine.pk %}" method="POST">
+              {% csrf_token %}
+              <button class="btn btn-sm btn-primary">삭제</button>
+            </form>
+            <button class="btn btn-sm btn-secondary" data-bs-dismiss="modal">닫기</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <a href="{% url 'machines:index' %}" class="btn btn-sm btn-primary">목록으로</a>
   </div>
-
-  <a href="{% url 'machines:update' machine.pk %}" class="btn btn-sm btn-primary">수정</a>
-  <form action="{% url 'machines:delete' machine.pk %}" method="POST">
-    {% csrf_token %}
-    <button class="btn btn-sm btn-secondary">삭제</button>
-  </form>
-  <a href="{% url 'machines:index '%}" class="btn btn-sm btn-primary">목록으로</a>
 {% endblock content %}

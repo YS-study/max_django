@@ -3,15 +3,28 @@
 {% block content %}
 <h1 class="text-center mb-5">index</h1>
 
-<a href="{% url 'machines:create' %}" class="btn btn-sm btn-primary">글쓰기</a>
+<div class="d-inline-flex">
+<select class="form-select form-select-sm" aria-label="Default select example">
+  <option selected>카테고리 분류</option>
+  <option value="1">중고 기계</option>
+  <option value="2">신품 기계</option>
+</select>
+</div>
+
+<div class="d-inline-flex ms-auto mb-3"> <!-- 로그인한 사람만 보이게 하기 -->
+  <a href="{% url 'machines:create' %}" class="btn btn-sm btn-primary">글쓰기</a>
+</div>
+
 <div class="row">
   {% for machine in machines %}
   <div class="col-4">
     <div class="d-flex flex-column bg-warning py-3 gy-4">
-      <div class="d-flex justify-content-center">
-        <img src="{{ machine.photo.url }}" alt="img"> <!--https://picsum.photos/200/200 -->
+      <div class="d-flex justify-content-center bg-light machine-thumb">
+        <a href="{% url 'machines:detail' machine.pk %}">
+          <img src="{{ machine.photo.url }}" alt="img" class="rounded" height="200">
+        </a>
       </div>
-      <a href="{% url 'machines:detail' machine.pk %}" class="text-decoration-none">
+      <a href="{% url 'machines:detail' machine.pk %}" class="text-decoration-none bg-light">
         <p class="text-center mt-3">{{ machine.title }}</p>
       </a>
     </div>  

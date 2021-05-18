@@ -2,7 +2,6 @@ from django import forms
 from .models import Machine
 
 class MachineForm(forms.ModelForm):
-
     PICK_USED = False
     PICK_NEW = True
 
@@ -23,7 +22,7 @@ class MachineForm(forms.ModelForm):
     category = forms.ChoiceField(
         label='분류',
         choices= PICKS,
-        widget=forms.TextInput(
+        widget=forms.Select(
             attrs={
                 'class': 'form-select',
             }
@@ -45,4 +44,5 @@ class MachineForm(forms.ModelForm):
 
     class Meta:
         model = Machine
+        # fields = '__all__'
         fields = ('title', 'category', 'content', 'photo',)
