@@ -22,7 +22,7 @@ def create(request):
         if form.is_valid():
             machine = form.save(commit=False)
             machine.save()
-            return redirect('machines:detail', machine.pk)
+            return redirect('machines:index', machine.pk)
 
     else:
         form = MachineForm()
