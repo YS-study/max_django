@@ -1,5 +1,24 @@
 {% extends 'base.html' %}
 
 {% block content %}
+  <h3>글 작성</h3>
+  <form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% for field in form %}
+      {% if field.errors %}
+        {% for error in field.errors %}
+          <div class="alert alert-warning" role="alert"><strong>{{ error|escape }}</strong></div>
+        {% endfor %}
+      {% endif %}
+      <div class="my-3">
+        {{ field.label_tag }}
+        {{ field }}
+      </div>
+    {% endfor %}
+    <br>
+    <input type="submit" value="글쓰기" class="btn btn-sm btn-primary">
+    <a href="{% url 'machines:index' %}" class="btn btn-sm btn-secondary">뒤로가기</a>
+  </form>
 
+  
 {% endblock content %}

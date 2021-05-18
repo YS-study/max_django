@@ -1,5 +1,19 @@
 {% extends 'base.html' %}
 
 {% block content %}
+  <h3>{{ machine.title }}</h3>
+  {% if machine.photo %}
+    <img src="{{ machine.photo.url }}" alt="{{ machine.photo }}">
+  {% endif %}
 
+  <div class="desc">
+    <p>{{ machine.content }}</p>
+  </div>
+
+  <a href="{% url 'machines:update' machine.pk %}" class="btn btn-sm btn-primary">수정</a>
+  <form action="{% url 'machines:delete' machine.pk %}" method="POST">
+    {% csrf_token %}
+    <button class="btn btn-sm btn-secondary">삭제</button>
+  </form>
+  <a href="{% url 'machines:index '%}" class="btn btn-sm btn-primary">목록으로</a>
 {% endblock content %}
