@@ -1,7 +1,35 @@
 /* stylesheet */
 
-.div-border {
+.title-box {
   border-top: 1px solid black;
   border-bottom: 1px solid gray;
 }
-  
+
+.content-box {
+  border-bottom: 1px solid black;
+}
+
+.answer-box {
+  background-color: #f3f3f3;
+  border-top: 1px solid gray;
+  border-bottom: 1px solid black;
+}
+
+/* 답변 대기, 답변 완료 */
+.answer-bedge-todo{
+	padding: 3px 7px;
+	border-radius: 10px;
+	font-weight: 600;
+	font-size: 8px;
+	background: gray;
+	color: whitesmoke;
+}
+
+.answer-bedge-complete{
+	padding: 3px 7px;
+	border-radius: 10px;
+	font-weight: 600;
+	font-size: 8px;
+	background: #313b8d;
+	color: whitesmoke;
+}
