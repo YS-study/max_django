@@ -2,12 +2,12 @@ from django import forms
 from .models import Machine
 
 class MachineForm(forms.ModelForm):
-    PICK_USED = False
-    PICK_NEW = True
+    # PICK_USED = False
+    # PICK_NEW = True
 
     PICKS = [
-        (PICK_USED, '중고 기계'),
-        (PICK_NEW, '신품 기계'),
+        ('중고 기계', '중고 기계'),
+        ('신품 기계', '신품 기계'),
     ]
 
     title = forms.CharField(
@@ -41,8 +41,18 @@ class MachineForm(forms.ModelForm):
             'required': '내용을 입력하세요',
         }
     )
+    photo = forms.ImageField(
+        label='사진',
+        required=True,
+    )
 
     class Meta:
         model = Machine
         # fields = '__all__'
         fields = ('title', 'category', 'content', 'photo',)
+
+    # def clean_photo(self):
+    #     photo = self.cleaned_data.get('photo', True)
+    #     if not photo:
+    #         photo = None
+    #     return photo

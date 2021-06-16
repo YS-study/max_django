@@ -17,8 +17,8 @@
 
 <div class="row">
   {% for machine in machines %}
-  <div class="col-4">
-    <div class="d-flex flex-column bg-warning py-3 gy-4">
+  <div class="col-6 col-lg-4 col-xxl-3">
+    <div class="d-flex flex-column py-3 gy-4">
       <div class="d-flex justify-content-center bg-light machine-thumb">
         <a href="{% url 'machines:detail' machine.pk %}">
           <img src="{{ machine.photo.url }}" alt="img" class="rounded" height="200">
@@ -32,5 +32,9 @@
 
   {% endfor %}
 </div>
+
+<script>
+
+</script>
 
 {% endblock content %}

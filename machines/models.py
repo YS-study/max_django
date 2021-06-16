@@ -10,7 +10,15 @@ def machines_image_path(instance, filename):
 class Machine(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
-    content = models.TextField()
+    content = models.TextField()    
+    # PICK_USED = False
+    # PICK_NEW = True
+    PICKS = [
+        ('중고 기계', '중고 기계'),
+        ('신품 기계', '신품 기계'),
+    ]
+    # 뒤에가 선택이고 앞에가 db에 들어가는 말
+    category = models.CharField(max_length=20, choices=PICKS, default = '')    
     photo = ProcessedImageField(
         blank=True,
         # processors=[Thumbnail(200, 200)],
