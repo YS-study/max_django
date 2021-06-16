@@ -3,6 +3,8 @@
 {% block content %}
   <div class="bg-light">
     <h3 class="text-center">{{ machine.title }}</h3>
+    <h5 class="">작성일 {{ machine.created_at }}</h5>
+    <p>카테고리 : {{ machine.category }}</p>
     {% if machine.photo %}
       <img src="{{ machine.photo.url }}" alt="{{ machine.photo }}">
     {% endif %}
