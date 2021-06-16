@@ -15,7 +15,14 @@
     {% for question in questions %}
       <tr>
         <th scope="row" class='text-center'>{{ question.pk }}</th>
-        <td><a href="{% url 'board:qna_detail' question.pk %}" class="text-decoration-none text-dark">{{ question.title }}</a></td>
+        <td>
+          <a href="{% url 'board:qna_detail' question.pk %}" class="text-decoration-none text-dark">{{ question.title }}</a>
+          {% if question.answer_set.count %}
+            <small class="answer-bedge-todo"> 답변 완료 </small>
+          {% else %}
+            <small class="answer-bedge-complete"> 답변 대기 </small>
+          {% endif %}
+        </td>
         <td class='text-center'>{{ question.created_at|date:'Y.m.d' }}</td>
       </tr>
     {% endfor %}
@@ -37,6 +44,7 @@
     {% endif %}
     
     <li class="page-item"><a class="page-link">Page {{ questions.number }} of {{ questions.paginator.num_pages }}</a></li>
+
     {% if questions.has_next %}  
       <li class="page-item">
         <a class="page-link" href="?page={{ questions.next_page_number }}">다음 페이지</a>
