@@ -20,7 +20,7 @@
           {% if question.answer_set.count %}
             <span class="badge bg-secondary">답변 완료</span>
           {% else %}
-           <span class="badge navy-btn">답변 대기</span>
+           <span class="badge btn-navy">답변 대기</span>
           {% endif %}
         </td>
         <td class='text-center lightgrey-text'>{{ question.created_at|date:'Y.m.d' }}</td>
@@ -61,7 +61,7 @@
       </li>
     {% endif %}
   </ul>
-  <button type="button" class="btn navy-btn"><a href="{% url 'board:qna_create'%}" class="text-decoration-none text-light">글쓰기</a></button>
+  <button type="button" class="btn btn-navy"><a href="{% url 'board:qna_create'%}" class="text-decoration-none text-light">글쓰기</a></button>
 </nav>
 
 {% endblock content %}

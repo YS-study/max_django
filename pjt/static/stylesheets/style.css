@@ -56,9 +56,13 @@ body {
   color: #aaa
 }
 
-.navy-btn {
+.btn-navy {
   background-color: #111f73;
   color: white;
+}
+
+.btn-navy:hover {
+  color: white !important;
 }
 
 /* 페이지네이션 커스텀 */

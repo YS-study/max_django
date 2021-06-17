@@ -21,7 +21,7 @@
     {% for answer in answers %}
       <div class="my-3">
         <div class="d-flex w-100">
-          <small class="mb-1">admin | {{ answer.created_at|date:'Y.m.d H:i' }}</small>
+          <p class="m-0"><span class="badge btn-navy mb-1">관리자</span> {{ answer.created_at|date:'Y.m.d H:i' }}</p>
         </div>
         <p class="mb-1">{{ answer.content }}</p>
       </div>
@@ -50,7 +50,7 @@
 
 {# 목록 버튼 #}
 <div class="d-flex justify-content-center mt-5">
-  <a class="btn btn-primary" href="{% url 'board:qna' %}" role="button">목록</a>
+  <a class="btn btn-navy" href="{% url 'board:qna' %}" role="button">목록</a>
 </div>
 
 {% endblock content %}
