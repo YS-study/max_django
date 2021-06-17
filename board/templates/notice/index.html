@@ -6,17 +6,17 @@
 <table class="table table-hover">
   <thead>
     <tr>
-      <th scope="col" class='text-center'>번호</th>
-      <th scope="col" class='text-center'>제목</th>
-      <th scope="col" class='text-center'>등록일</th>
+      <th scope="col" class='text-center darkgrey-text'>번호</th>
+      <th scope="col" class='text-center darkgrey-text'>제목</th>
+      <th scope="col" class='text-center darkgrey-text'>등록일</th>
     </tr>
   </thead>
   <tbody>
     {% for post in posts %}
       <tr>
-        <th scope="row" class='text-center'>{{ post.pk }}</th>
+        <th scope="row" class='text-center grey-text'>{{ post.pk }}</th>
         <td><a href="{% url 'board:notice_detail' post.pk %}" class="text-decoration-none text-dark">{{ post.title }}</a></td>
-        <td class='text-center'>{{ post.created_at|date:'Y.m.d' }}</td>
+        <td class='text-center lightgrey-text'>{{ post.created_at|date:'Y.m.d' }}</td>
       </tr>
     {% endfor %}
   </tbody>

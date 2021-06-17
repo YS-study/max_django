@@ -6,24 +6,24 @@
 <table class="table table-hover">
   <thead>
     <tr>
-      <th scope="col" class='text-center'>번호</th>
-      <th scope="col" class='text-center'>제목</th>
-      <th scope="col" class='text-center'>등록일</th>
+      <th scope="col" class='text-center darkgrey-text'>번호</th>
+      <th scope="col" class='text-center darkgrey-text'>제목</th>
+      <th scope="col" class='text-center darkgrey-text'>등록일</th>
     </tr>
   </thead>
   <tbody>
     {% for question in questions %}
       <tr>
-        <th scope="row" class='text-center'>{{ question.pk }}</th>
+        <th scope="row" class='text-center grey-text'>{{ question.pk }}</th>
         <td>
           <a href="{% url 'board:qna_detail' question.pk %}" class="text-decoration-none text-dark">{{ question.title }}</a>
           {% if question.answer_set.count %}
-            <small class="answer-bedge-todo"> 답변 완료 </small>
+            <span class="badge bg-secondary">답변 완료</span>
           {% else %}
-            <small class="answer-bedge-complete"> 답변 대기 </small>
+           <span class="badge navy-btn">답변 대기</span>
           {% endif %}
         </td>
-        <td class='text-center'>{{ question.created_at|date:'Y.m.d' }}</td>
+        <td class='text-center lightgrey-text'>{{ question.created_at|date:'Y.m.d' }}</td>
       </tr>
     {% endfor %}
   </tbody>
@@ -55,7 +55,7 @@
       </li>
     {% endif %}
   </ul>
-  <button type="button" class="btn btn-primary"><a href="{% url 'board:qna_create'%}" class="text-decoration-none text-light">글쓰기</a></button>
+  <button type="button" class="btn navy-btn"><a href="{% url 'board:qna_create'%}" class="text-decoration-none text-light">글쓰기</a></button>
 </nav>
 
 {% endblock content %}
