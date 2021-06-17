@@ -30,28 +30,34 @@
 </table>
 
 {# pagination #}
-<nav aria-label="Page navigation example" class="d-flex justify-content-between">
+<nav aria-label="Page navigation" class="d-flex justify-content-between">
   <div></div>
   <ul class="pagination mb-0">
     {% if questions.has_previous %}
         <li class="page-item">
-          <a class="page-link" href="?page={{ questions.previous_page_number }}">이전 페이지</a>
+          <a class="page-link" href="?page={{ questions.previous_page_number }}">«</a>
         </li>
     {% else %}
         <li class="page-item disabled">
-          <a class="page-link" href="#" tabindex="-1" aria-disabled="true">이전 페이지</a>
+          <a class="page-link" href="#" tabindex="-1" aria-disabled="true">«</a>
         </li>
     {% endif %}
-    
-    <li class="page-item"><a class="page-link">Page {{ questions.number }} of {{ questions.paginator.num_pages }}</a></li>
+
+    {% for page_num in current_page_range %}
+      {% if page_num == questions.number %}
+        <li class="page-item active"><a class="page-link" href="?page={{ page_num }}">{{ page_num }}</a></li>
+      {% else %}
+        <li class="page-item"><a class="page-link" href="?page={{ page_num }}">{{ page_num }}</a></li>
+      {% endif %}
+    {% endfor %}
 
     {% if questions.has_next %}  
       <li class="page-item">
-        <a class="page-link" href="?page={{ questions.next_page_number }}">다음 페이지</a>
+        <a class="page-link" href="?page={{ questions.next_page_number }}">»</a>
       </li>
     {% else %}
       <li class="page-item disabled">
-        <a class="page-link" href="#">다음 페이지</a>
+        <a class="page-link" href="#">»</a>
       </li>
     {% endif %}
   </ul>

@@ -60,3 +60,28 @@ body {
   background-color: #111f73;
   color: white;
 }
+
+/* 페이지네이션 커스텀 */
+.pagination>li>a { 
+  border-radius: 50% !important;
+  padding: 6px 13px;
+  margin: 0 5px;
+  color: #111f73;
+}
+
+.page-item.active .page-link {
+  background-color: #111f73;
+  border-color: #111f73;
+}
+
+.page-link:hover {
+  color: #111f73;
+}
+
+.page-link:focus {
+  color: #111f73;
+}
+
+.page-item.disabled .page-link {
+  color: #aaa;
+}
