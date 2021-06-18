@@ -2,13 +2,14 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   {# 여기 flex-column 추가해서 가운데 정렬 #}
   <div class="container-fluid">
+    <a href="{% url 'main' %}" class="text-decoration-none text-dark company-name ps-5 my-1 ms-5 d-none d-sm-block">맥스 목공기계</a>
+    <a href="{% url 'main' %}" class="text-decoration-none text-dark company-name my-1 m-auto d-sm-none">맥스 목공기계</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     
-    <div class="collapse navbar-collapse d-flex justify-content-between px-5 my-1 mx-5" id="navbarSupportedContent">
-      <a href="{% url 'main' %}" class="text-decoration-none text-dark company-name">맥스 목공기계</a>
-      <ul class="navbar-nav">
+    <div class="collapse navbar-collapse pe-5 my-1 me-5 " id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto">
         <li class="nav-item mx-3 nav-font">
           <a class="nav-link text-dark" href="{% url 'about:contact' %}">회사 소개</a>
         </li>
