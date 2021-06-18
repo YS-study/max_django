@@ -1,5 +1,16 @@
 /* stylesheet */
 
+@font-face {
+  font-family: 'ONE-Mobile-Title';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-Title.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: 'Noto Sans KR', sans-serif; 
+}
+
 .title-box {
   border-top: 1px solid black;
   border-bottom: 1px solid gray;
@@ -15,21 +26,66 @@
   border-bottom: 1px solid black;
 }
 
-/* 답변 대기, 답변 완료 */
-.answer-bedge-todo{
-	padding: 3px 7px;
-	border-radius: 10px;
-	font-weight: 600;
-	font-size: 8px;
-	background: gray;
-	color: whitesmoke;
+.menu-box {
+  font-family: 'ONE-Mobile-Title';
+  color: white;
+  padding: 80px 0px;
 }
 
-.answer-bedge-complete{
-	padding: 3px 7px;
-	border-radius: 10px;
-	font-weight: 600;
-	font-size: 8px;
-	background: #313b8d;
-	color: whitesmoke;
+/* 맥스 목공기계 */
+.company-name {
+  font-family: 'ONE-Mobile-Title';
+  font-size: 40px;
+}
+
+/* 네브바 스타일링 */
+.nav-font {
+  font-size: 18px;
+  color: black;
+}
+
+.grey-text {
+  color: rgb(133, 133, 133);
+}
+
+.darkgrey-text {
+  color: #444
+}
+
+.lightgrey-text {
+  color: #aaa
+}
+
+.btn-navy {
+  background-color: #111f73;
+  color: white;
+}
+
+.btn-navy:hover {
+  color: white !important;
+}
+
+/* 페이지네이션 커스텀 */
+.pagination>li>a { 
+  border-radius: 50% !important;
+  padding: 6px 13px;
+  margin: 0 5px;
+  color: #111f73;
+}
+
+.page-item.active .page-link {
+  background-color: #111f73;
+  border-color: #111f73;
+}
+
+.page-link:hover {
+  color: #111f73;
+}
+
+.page-link:focus {
+  color: #111f73;
+}
+
+.page-item.disabled .page-link {
+  color: #aaa;
 }
