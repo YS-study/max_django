@@ -32,6 +32,15 @@ body {
   padding: 80px 0px;
 }
 
+.map-box {
+  height: 550px;
+}
+
+.gray-box {
+  background-color: #f3f3f3;
+  border-radius: 10px;
+}
+
 /* 맥스 목공기계 */
 .company-name {
   font-family: 'ONE-Mobile-Title';

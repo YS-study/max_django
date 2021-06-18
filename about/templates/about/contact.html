@@ -2,10 +2,37 @@
 
 {% block header %} 
   <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId={{ NAVER_MAP_API_KEY }}"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>
 {% endblock header %}
 
 {% block content %}
-<div id="map" style="width:80% ;height:500px;"></div>
+<div class="d-flex row justify-content-center">
+  <div id="map" class="map-box col-11 col-lg-6"></div>
+  <div class="d-flex flex-column col-12 col-lg-6">
+    <div class="m-3">
+      <h4 class="ps-3">운영 정보</h4>
+      <div class="gray-box p-3">
+        <p class="m-0"><i class="fas fa-phone"></i> 010-1234-5678</p>
+        <p class="m-0"><i class="fas fa-clock"></i> 09:00~18:00 (연중무휴)</p>
+        <p class="m-0"><i class="fas fa-map-marker-alt"></i> 경기도 광주시 곤지암읍 경충대로 811-70 맥스목공기계 (삼리 145)</p>
+      </div>
+    </div>
+    <div class="m-3">
+      <h4 class="ps-3">찾아오시는 길</h4>
+      <div class="gray-box p-3">
+        <p class="badge btn-navy">자가용 이용</p>
+        <p class="m-0">경기도 광주시 곤지암읍 경충대로 811-70 맥스목공기계 (삼리 145)</p>
+        <hr>
+        <p class="badge btn-navy">대중교통 이용</p>
+        <ul class="m-0">
+          <li class="m-0">경강선 [곤지암역 2번 출구]로 나온 뒤 [곤지암역,예계교] 300번 버스 승차 4개 정류장 이동 후 [삼리.킴스빌리지.현진에버빌아파트] 하차 후 도보 10분</li>
+          <li class="m-0">경강선 [곤지암역 1번 출구]로 나온 뒤 [곤지암역] 39-2번 버스 승차 [삼리.킴스빌리지.현진에버빌아파트] 하차 후 도보 10분</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
 
 <script>
   var max_store = new naver.maps.LatLng(37.35583337549125, 127.32161427101504),
