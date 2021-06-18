@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,6 +22,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-8!04924r26v&4(g^d$+(^%5l6+r4!0xolpm&9vt)b3toiog)vq'
+
+# 네이버 맵 API KEY
+NAVER_MAP_API_KEY = config("NAVER_MAP_API_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
