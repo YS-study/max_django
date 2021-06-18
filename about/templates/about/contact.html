@@ -8,14 +8,42 @@
 <div id="map" style="width:80% ;height:500px;"></div>
 
 <script>
-  var map = new naver.maps.Map('map', {
-      center: new naver.maps.LatLng(37.35583337549125, 127.32161427101504),
-      zoom: 17
+  var max_store = new naver.maps.LatLng(37.35583337549125, 127.32161427101504),
+    map = new naver.maps.Map('map', {
+        center: max_store.destinationPoint(0, 20),
+        zoom: 17
+    }),
+    marker = new naver.maps.Marker({
+        map: map,
+        position: max_store
+    });
+
+  var contentString = [
+          '<div class="p-2">',
+          '   <p class="m-0"> 맥스 목공기계 </p>',
+          '</div>'
+      ].join('');
+
+  var infowindow = new naver.maps.InfoWindow({
+      content: contentString,
+      maxWidth: 200,
+      backgroundColor: "white",
+      borderColor: "black",
+      borderWidth: 2,
+      anchorSize: new naver.maps.Size(12, 12),
+      anchorSkew: true,
+      anchorColor: "white",
   });
 
-  var marker = new naver.maps.Marker({
-      position: new naver.maps.LatLng(37.35583337549125, 127.32161427101504),
-      map: map
+  naver.maps.Event.addListener(marker, "click", function(e) {
+      if (infowindow.getMap()) {
+          infowindow.close();
+      } else {
+          infowindow.open(map, marker);
+      }
   });
+
+  infowindow.open(map, marker);
+
 </script>
 {% endblock content %}
