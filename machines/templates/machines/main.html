@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block main_content %}
+
+<div class="banner">
+  <div class="container bg-secondary" style="height: 100%;">
+    <div class="row justify-content-center bg-success">
+      <div class="col-10 col-md-6 bg-warning align-self-center mt-5 py-5">
+        <p>중고, 신품 목공 기계</p>
+        <h2>"매입 및 판매 업체 언제든</h2>
+        <h2> 24시간 문의 가능합니다."</h2>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container my-5">
+
+  <h4 class="sub-title-name">목공 기계</h4>
+  최신 업데이트 된 기계 목록..
+  <div class="row">
+  {% for machine in machines %}
+    <div class="col-6 col-lg-4 col-xxl-3">
+      <div class="d-flex flex-column py-3 gy-4">
+        <div class="d-flex justify-content-center bg-light machine-thumb">
+          <a href="{% url 'machines:detail' machine.pk %}">
+            <img src="{{ machine.photo.url }}" alt="img" class="rounded" height="200">
+          </a>
+        </div>
+        <a href="{% url 'machines:detail' machine.pk %}" class="text-decoration-none bg-light">
+          <p class="text-center mt-3">{{ machine.title }}</p>
+        </a>
+      </div>  
+    </div>
+  {% endfor %}
+  </div>
+
+</div>
+ 
+
+{% endblock main_content %}
+
