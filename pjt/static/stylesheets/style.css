@@ -11,6 +11,13 @@ body {
   font-family: 'Noto Sans KR', sans-serif; 
 }
 
+footer {
+  margin-top: 150px;
+  background-color: #444;
+  height: 130px;
+  font-size: 13px;
+}
+
 .title-box {
   border-top: 1px solid black;
   border-bottom: 1px solid gray;
