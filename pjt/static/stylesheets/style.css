@@ -84,6 +84,13 @@ footer {
   color: black;
 }
 
+/* 메인 배너 */
+.banner {
+  background-color: #ccc;
+  height: 500px;
+}
+
+
 /* 회색 */
 .grey-text {
   color: rgb(133, 133, 133);

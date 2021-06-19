@@ -4,7 +4,16 @@ from django.views.decorators.http import require_safe, require_http_methods, req
 from .models import Machine
 from .forms import MachineForm
 
+def main(request):
+    machines = Machine.objects.order_by('-pk')
+    context = {
+        'machines': machines,
+        'menu': '목공기계',
+    }
 
+    return render(request, 'machines/main.html', context)
+
+    
 def index(request):
     machines = Machine.objects.order_by('-pk')
     context = {
