@@ -13,6 +13,17 @@ def index(request):
     }
     return render(request, 'machines/index.html', context)
 
+def filter(request, category='all'):
+    if category == 'all':
+        machines = Machine.objects.order_by('-pk')
+    else:
+        machines = Machine.objects.filter(category=category).order_by('-pk')
+    context = {
+        'machines': machines,
+        'menu': '목공기계({})'.format(category[:2]),
+    }
+    return render(request, 'machines/index.html', context)
+
 @login_required
 @require_http_methods(['GET', 'POST'])
 def create(request):
