@@ -22,7 +22,8 @@ def index(request):
     }
     return render(request, 'machines/index.html', context)
 
-def filter(request, category='all'):
+
+def index_filter(request, category='all'):
     if category == 'all':
         machines = Machine.objects.order_by('-pk')
     elif category =='신품 기계' or category == '중고 기계':
@@ -34,6 +35,7 @@ def filter(request, category='all'):
         'menu': '목공기계({})'.format(category[:2]),
     }
     return render(request, 'machines/index.html', context)
+
 
 @login_required
 @require_http_methods(['GET', 'POST'])
