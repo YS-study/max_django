@@ -30,8 +30,7 @@
 </table>
 
 {# pagination #}
-<nav aria-label="Page navigation" class="d-flex justify-content-between">
-  <div></div>
+<nav aria-label="Page navigation" class="d-flex justify-content-center">
   <ul class="pagination mb-0">
     {% if questions.has_previous %}
         <li class="page-item">
@@ -61,7 +60,10 @@
       </li>
     {% endif %}
   </ul>
-  <button type="button" class="btn btn-navy"><a href="{% url 'board:qna_create'%}" class="text-decoration-none text-light">글쓰기</a></button>
 </nav>
+<div class="d-flex justify-content-end">
+  <button type="button" class="btn btn-navy btn-minus-margin d-none d-sm-block"><a href="{% url 'board:qna_create'%}" class="text-decoration-none text-light">글쓰기</a></button>
+  <button type="button" class="btn btn-navy d-sm-none mt-3"><a href="{% url 'board:qna_create'%}" class="text-decoration-none text-light">글쓰기</a></button>
+</div>
 
 {% endblock content %}
