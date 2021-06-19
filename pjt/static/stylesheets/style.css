@@ -74,6 +74,10 @@ body {
   color: white !important;
 }
 
+.btn-minus-margin {
+  margin-top: -38px;
+}
+
 /* 페이지네이션 커스텀 */
 .pagination>li>a { 
   border-radius: 50% !important;
