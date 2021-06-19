@@ -11,6 +11,13 @@ body {
   font-family: 'Noto Sans KR', sans-serif; 
 }
 
+footer {
+  margin-top: 150px;
+  background-color: #444;
+  height: 130px;
+  font-size: 13px;
+}
+
 .title-box {
   border-top: 1px solid black;
   border-bottom: 1px solid gray;
@@ -28,12 +35,14 @@ body {
 
 .menu-box {
   font-family: 'ONE-Mobile-Title';
+  padding: 100px 0px;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("../image/menu_image.jpg");
+  background-position: center center;
   color: white;
-  padding: 80px 0px;
 }
 
 .map-box {
-  height: 550px;
+  height: 570px;
 }
 
 .gray-box {
@@ -49,6 +58,24 @@ body {
 
 .sub-title-name {
   font-family: 'ONE-Mobile-Title';
+}
+
+/* ul 스타일링 */
+.list-blit {
+  width: 7px;
+  height: 7px;
+  border-radius: 100%;
+  background-color: #111f73;
+  position: absolute;
+  margin-top: 9px;
+}
+
+.list-line {
+  position: absolute;
+  border-left: 1px solid rgb(133, 133, 133);
+  height: 72px;
+  margin-top: 9px;
+  margin-left: 3px;
 }
 
 /* 네브바 스타일링 */
