@@ -1,81 +1,34 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1 class="text-center mb-5">index</h1>
-
-<div class="d-inline-flex">
-  <select id="machine-category" class="form-select form-select-sm" onChange="sortCategory(this);">
-    <option selected value="all">전체</option>
-    <option value="중고 기계">중고 기계</option>
-    <option value="신품 기계">신품 기계</option>
-  </select>
-
-  {% comment %} <button class="btn btn-sm btn-navy" onClick="sortCategory(this);">검색</button> {% endcomment %}
-  {% comment %} <a href="{% url 'machines:index' %}" class="text-decoration-none me-4">전체</a>
-  <a href="" class="text-decoration-none me-4">중고 기계</a>
-  <a href="" class="text-decoration-none me-4">신품 기계</a> {% endcomment %}
-</div>
-
-<div class="d-inline-flex ms-auto mb-3"> <!-- admin에게만 보이게 하기 -->
-  <a href="{% url 'machines:create' %}" class="btn btn-sm btn-navy">글쓰기</a>
-</div>
-
-<div class="row">
-  {% for machine in machines %}
-  <div class="col-6 col-lg-4 col-xxl-3">
-    <div class="d-flex flex-column py-3 gy-4">
-      <div class="d-flex justify-content-center bg-light machine-thumb">
-        <a href="{% url 'machines:detail' machine.pk %}">
-          <img src="{{ machine.photo.url }}" alt="img" class="rounded" height="200">
-        </a>
+  <div class="d-flex justify-content-between">
+    <div>
+      <button class="btn btn-sm btn-navy"><a href="{% url 'machines:index' %}" class="text-decoration-none" >전체</a></button>
+      <button class="btn btn-sm btn-navy"><a href="{% url 'machines:filter' '신품 기계' %}" class="text-decoration-none">신품 기계</a></button>
+      <button class="btn btn-sm btn-navy"><a href="{% url 'machines:filter' '중고 기계' %}" class="text-decoration-none">중고 기계</a></button>
+    </div>
+    {% if request.user.is_authenticated %}
+      <div>
+        <button class="btn btn-sm btn-navy"><a href="{% url 'machines:create' %}" class="text-decoration-none">글쓰기</a></button>
       </div>
-      <a href="{% url 'machines:detail' machine.pk %}" class="text-decoration-none bg-light">
-        <p class="text-center mt-3">{{ machine.title }}</p>
-      </a>
-    </div>  
+    {% endif %}
   </div>
-  {% endfor %}
-</div>
 
-<div id="result">
-  {% comment %} {% for machine in machines %}
-  <div class="col-6 col-lg-4 col-xxl-3">
-    <div class="d-flex flex-column py-3 gy-4">
-      <div class="d-flex justify-content-center bg-light machine-thumb">
-        <a href="{% url 'machines:detail' machine.pk %}">
-          <img src="{{ machine.photo.url }}" alt="img" class="rounded" height="200">
+  <div class="row">
+    {% for machine in machines %}
+    <div class="col-6 col-lg-4 col-xxl-3">
+      <div class="d-flex flex-column py-3 gy-4">
+        <div class="d-flex justify-content-center bg-light machine-thumb">
+          <a href="{% url 'machines:detail' machine.pk %}">
+            <img src="{{ machine.photo.url }}" alt="img" class="rounded" height="200">
+          </a>
+        </div>
+        <a href="{% url 'machines:detail' machine.pk %}" class="text-decoration-none bg-light">
+          <p class="text-center mt-3">{{ machine.title }}</p>
         </a>
-      </div>
-      <a href="{% url 'machines:detail' machine.pk %}" class="text-decoration-none bg-light">
-        <p class="text-center mt-3">{{ machine.title }}</p>
-      </a>
-    </div>  
+      </div>  
+    </div>
+    {% endfor %}
   </div>
-  {% endfor %} {% endcomment %}
-</div>
 
-<script type="text/javascript">
-	function sortCategory(e) {
-		const values = [...e.options]
-      .filter(option => option.selected)
-      .map(option => option.value);
-
-    document.getElementById('result').innerText = values;
-	} 
-
-  {% comment %} function sortCategory(e) { 
-    $('#machine-category').on('change', function(){
-      const selected = [...e.options]
-      .filter(option => option.selected)
-      .map(option => option.value);
-      if(selected != "all"){
-        e.filter(machine => machine.category).show();
-        e.not(machine => machine.category).hide();
-      } else {
-        e.show();
-      }
-
-    })
-  } {% endcomment %}  
-</script>
 {% endblock content %}
