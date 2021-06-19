@@ -47,12 +47,17 @@ body {
   font-size: 40px;
 }
 
+.sub-title-name {
+  font-family: 'ONE-Mobile-Title';
+}
+
 /* 네브바 스타일링 */
 .nav-font {
   font-size: 18px;
   color: black;
 }
 
+/* 회색 */
 .grey-text {
   color: rgb(133, 133, 133);
 }
@@ -65,6 +70,12 @@ body {
   color: #aaa
 }
 
+.navy-text {
+  color: #111f73;
+  width: 18px;
+}
+
+/* 네이비 버튼 */
 .btn-navy {
   background-color: #111f73;
   color: white;
