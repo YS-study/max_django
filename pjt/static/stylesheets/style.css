@@ -104,12 +104,23 @@ footer {
 
 /* 네이비 버튼 */
 .btn-navy {
+  color: white;
   background-color: #111f73;
+  border: 1px solid #111f73;
+}
+
+.btn-navy > a {
   color: white;
 }
 
 .btn-navy:hover {
-  color: white !important;
+  color: #111f73;
+  background-color: #fff;
+  border: 1px solid #111f73;
+}
+
+.btn-navy:hover > a {
+  color: #111f73;  
 }
 
 .btn-minus-margin {

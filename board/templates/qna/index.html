@@ -62,8 +62,12 @@
   </ul>
 </nav>
 <div class="d-flex justify-content-end">
-  <button type="button" class="btn btn-navy btn-minus-margin d-none d-sm-block"><a href="{% url 'board:qna_create'%}" class="text-decoration-none text-light">글쓰기</a></button>
-  <button type="button" class="btn btn-navy d-sm-none mt-3"><a href="{% url 'board:qna_create'%}" class="text-decoration-none text-light">글쓰기</a></button>
+  <button type="button" class="btn btn-navy btn-minus-margin d-none d-sm-block">
+    <a href="{% url 'board:qna_create'%}" class="text-decoration-none">글쓰기</a>
+  </button>
+  <button type="button" class="btn btn-navy d-sm-none mt-3">
+    <a href="{% url 'board:qna_create'%}" class="text-decoration-none">글쓰기</a>
+  </button>
 </div>
 
 {% endblock content %}
