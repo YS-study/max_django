@@ -25,8 +25,10 @@ def index(request):
 def filter(request, category='all'):
     if category == 'all':
         machines = Machine.objects.order_by('-pk')
-    else:
+    elif category =='신품 기계' or category == '중고 기계':
         machines = Machine.objects.filter(category=category).order_by('-pk')
+    else:
+        return redirect('machines:index')
     context = {
         'machines': machines,
         'menu': '목공기계({})'.format(category[:2]),
