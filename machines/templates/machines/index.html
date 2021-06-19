@@ -4,8 +4,8 @@
   <div class="d-flex justify-content-between">
     <div>
       <button class="btn btn-sm btn-navy"><a href="{% url 'machines:index' %}" class="text-decoration-none" >전체</a></button>
-      <button class="btn btn-sm btn-navy"><a href="{% url 'machines:filter' '신품 기계' %}" class="text-decoration-none">신품 기계</a></button>
-      <button class="btn btn-sm btn-navy"><a href="{% url 'machines:filter' '중고 기계' %}" class="text-decoration-none">중고 기계</a></button>
+      <button class="btn btn-sm btn-navy"><a href="{% url 'machines:index_filter' '신품 기계' %}" class="text-decoration-none">신품 기계</a></button>
+      <button class="btn btn-sm btn-navy"><a href="{% url 'machines:index_filter' '중고 기계' %}" class="text-decoration-none">중고 기계</a></button>
     </div>
     {% if request.user.is_authenticated %}
       <div>
