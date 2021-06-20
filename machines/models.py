@@ -10,7 +10,7 @@ def machines_image_path(instance, filename):
 
 class Machine(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    title = models.CharField(max_length=100)
+    title = models.CharField(max_length=50)
     content = models.TextField()    
     # PICK_USED = False
     # PICK_NEW = True
@@ -27,9 +27,9 @@ class Machine(models.Model):
         upload_to='%Y/%m/%d/'
     )
     photo_thumbnail = ImageSpecField(source='photo',
-        processors=[ResizeToFill(400, 300)],
+        processors=[ResizeToFill(300, 200)],
         format='JPEG',
-        options={'quality': 60})
+        options={'quality': 100})
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

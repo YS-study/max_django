@@ -5,12 +5,11 @@ from .models import Machine
 from .forms import MachineForm
 
 def main(request):
-    machines = Machine.objects.order_by('-pk')
+    machines = Machine.objects.order_by('-pk')[:4]
     context = {
         'machines': machines,
         'menu': '목공기계',
     }
-
     return render(request, 'machines/main.html', context)
 
     
