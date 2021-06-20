@@ -1,23 +1,25 @@
 {% extends 'base.html' %}
 
 {% block content %}
- 
-{# title #}
-<div class="d-flex justify-content-between title-box px-4 py-2">
-  <h1>{{ post.title }}</h1>
-  <small>{{ post.created_at|date:'Y.m.d H:i' }}</small>
-</div>
+<div class="row justify-content-center">
+  <div class="col-12 col-lg-10">
+    {# title #}
+    <div class="d-flex justify-content-between title-box px-4 py-2">
+      <h1>{{ post.title }}</h1>
+      <small>{{ post.created_at|date:'Y.m.d H:i' }}</small>
+    </div>
 
-{# content #}
-<div class='p-5 content-box'>
-  <p class='m-0'>
-    {{ post.content }}
-  </p>
-</div>
+    {# content #}
+    <div class='p-5 content-box'>
+      <p class='m-0'>
+        {{ post.content }}
+      </p>
+    </div>
 
-{# content 끝 & 목록 버튼 #}
-<div class="d-flex justify-content-center mt-5">
-  <a class="btn btn-primary" href="{% url 'board:notice' %}" role="button">목록</a>
+    {# content 끝 & 목록 버튼 #}
+    <div class="d-flex justify-content-center mt-5">
+      <a class="btn btn-sm btn-navy" href="{% url 'board:notice' %}" role="button">목록으로</a>
+    </div>
+  </div>
 </div>
-
 {% endblock content %}
