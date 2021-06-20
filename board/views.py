@@ -36,7 +36,9 @@ def notice_create(request):
     if request.method == 'POST':
         form = PostForm(request.POST)
         if form.is_valid():
-            post = form.save()
+            post = form.save(commit=False)
+            post.user = request.user 
+            post.save()
             return redirect('board:notice_detail', post.pk)
     else:
         form = PostForm()
@@ -86,8 +88,6 @@ def notice_delete(request, pk):
             post.delete()
             return redirect('board:notice')
     return redirect('board:detail', pk)
-
-
 
 
 def qna(request):

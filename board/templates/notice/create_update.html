@@ -1,11 +1,27 @@
 {% extends 'base.html' %}
 
 {% block content %}
-create 
-<form method="POST">
-  {% csrf_token %}
-  {{ form }}
-  <button>제출</button>
-</form>
+<div class="row justify-content-center">
+  <div class="col-12 col-lg-10">
+    <form method="POST">
+      {% csrf_token %}
+        {% for field in form %}
+          {% if field.errors %}
+            {% for error in field.errors %}
+              <div class="alert alert-warning" role="alert"><strong>{{ error|escape }}</strong></div>
+            {% endfor %}
+          {% endif %}
+          <div class="my-3">
+            {{ field.label_tag }}
+            {{ field }}
+          </div>
+        {% endfor %}
 
+      <div class="mt-4">
+        <button class="btn btn-sm btn-navy me-2">글쓰기</button>
+        <a href="{% url 'board:notice' %}" class="btn btn-sm btn-secondary" role="button">목록으로</a>
+      </div>
+    </form>  
+  </div>
+</div>
 {% endblock content %}
