@@ -87,7 +87,7 @@ def notice_delete(request, pk):
         if request.user == post.user:
             post.delete()
             return redirect('board:notice')
-    return redirect('board:detail', pk)
+    return redirect('board:notice_detail', pk)
 
 
 def qna(request):
