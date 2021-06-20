@@ -9,23 +9,13 @@
       <small>{{ post.created_at|date:'Y.m.d H:i' }}</small>
     </div>
 
-    {# content #}
-    <div class='p-5 content-box'>
-      <p class='m-0'>
-        {{ post.content }}
-      </p>
+    {# 수정 삭제 버튼 #}
+    {% if request.user.is_authenticated %}
+    <div class="d-flex justify-content-end pe-4 pt-2">
+      <a class="badge btn-navy me-2 text-decoration-none" href="{% url 'board:notice_update' post.pk %}">수정</a>
+      <a class="badge bg-secondary me-2 text-decoration-none" data-bs-toggle="modal" data-bs-target="#exampleModal">삭제</a>
     </div>
-
-    {# content 끝 & 목록 버튼 #}
-    <div class="d-flex justify-content-center mt-5">
-      {% if request.user.is_authenticated %}      
-        <a href="{% url 'board:notice_update' post.pk %}" class="btn btn-sm btn-navy me-2">수정</a>  
-        <button class="btn btn-sm btn-secondary me-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
-          삭제
-        </button>
-      {% endif %}
-      <a class="btn btn-sm btn-navy" href="{% url 'board:notice' %}" role="button">목록으로</a>
-    </div>
+    {% endif %}
 
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -48,6 +38,19 @@
         </div>
       </div>
     </div>
+
+    {# content #}
+    <div class='p-5 content-box'>
+      <p class='m-0'>
+        {{ post.content }}
+      </p>
+    </div>
+
+    {# content 끝 & 목록 버튼 #}
+    <div class="d-flex justify-content-center mt-5">
+      <a class="btn btn-sm btn-navy" href="{% url 'board:notice' %}" role="button">목록으로</a>
+    </div>
+
   </div>
 </div>
 {% endblock content %}
