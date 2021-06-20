@@ -46,7 +46,7 @@ def notice_create(request):
         'form': form,
         'menu': '공지사항',
     }
-    return render(request, 'notice/create_update.html', context)
+    return render(request, 'notice/create.html', context)
 
 # R
 def notice_detail(request, pk):
@@ -77,7 +77,7 @@ def notice_update(request, pk):
         'post': post,
         'menu': '공지사항',
     }
-    return render(request, 'notice/create_update.html', context)
+    return render(request, 'notice/update.html', context)
 
 # D
 @require_POST
@@ -126,7 +126,7 @@ def qna_create(request):
         'form': form,
         'menu': '1:1 문의'
     }
-    return render(request, 'qna/create_update.html', context)
+    return render(request, 'qna/create.html', context)
 
 
 # R
@@ -147,6 +147,9 @@ def qna_detail(request, pk):
 def qna_update(request, pk):
     question = get_object_or_404(Question, pk=pk)
     if request.method == 'POST':
+        if question.password != request.POST.get("password", None):
+            return redirect('board:qna_detail', question.pk)
+
         form = QuestionForm(request.POST, instance=question)
         if form.is_valid():
             question = form.save()
@@ -155,16 +158,17 @@ def qna_update(request, pk):
         form = QuestionForm(instance=question)
     context = {
         'form': form,
+        'question': question,
         'menu': '1:1 문의',
     }
-    return render(request, 'qna/create_update.html', context)
+    return render(request, 'qna/update.html', context)
 
 
 # D
 @require_POST
 def qna_delete(request, pk):
     question = get_object_or_404(Question, pk=pk)
-    if question.password == request.POST:
+    if question.password == request.POST.get("delete_password", None):
         question.delete()
         return redirect('board:qna')
     return redirect('board:qna_detail', question.pk)

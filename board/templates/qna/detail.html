@@ -14,11 +14,11 @@
 
     {# 수정 삭제 버튼 #}
     <div class="d-flex justify-content-end pe-4 pt-2">
-      <a class="badge btn-navy me-2 text-decoration-none">수정</a>
+      <a class="badge btn-navy me-2 text-decoration-none" href="{% url 'board:qna_update' question.pk %}">수정</a>
       <a class="badge bg-secondary me-2 text-decoration-none" data-bs-toggle="modal" data-bs-target="#deletemodal">삭제</a>
     </div>
 
-    <!-- Modal -->
+    <!-- 삭제 Modal -->
     <div class="modal fade" id="deletemodal" tabindex="-1" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -31,7 +31,7 @@
             <form action="{% url 'board:qna_delete' question.pk %}" method="POST">
               {% csrf_token %}
               <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="비밀번호 입력">
+                <input type="password" class="form-control" placeholder="비밀번호 입력" name="delete_password">
                 <button class="btn btn-outline-secondary">삭제</button>
               </div>
             </form>
