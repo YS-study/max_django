@@ -2,55 +2,58 @@
 
 {% block content %}
 
-{# title #}
-<div class="d-flex justify-content-between title-box px-4 py-2">
-  <h1>{{question.title}}</h1>
-  <small>{{ post.created_at|date:'Y.m.d H:i' }}</small>
-</div>
+<div class="row justify-content-center">
+  <div class="col-12 col-lg-10">
+    {# title #}
+    <div class="d-flex justify-content-between title-box px-4 py-2">
+      <h2>{{question.title}}</h2>
+      <small>{{ post.created_at|date:'Y.m.d H:i' }}</small>
+    </div>
 
-{# content #}
-<div class='p-5'>
-  <p class='m-0'>
-    {{question.content}}
-  </p>
-</div>
+    {# content #}
+    <div class='p-5'>
+      <p class='m-0'>
+        {{question.content}}
+      </p>
+    </div>
 
-{# 답변 #}
-<div class="px-5 py-2 answer-box">
-  {% if answers %}
-    {% for answer in answers %}
-      <div class="my-3">
-        <div class="d-flex w-100">
-          <p class="m-0"><span class="badge btn-navy mb-1">관리자</span> {{ answer.created_at|date:'Y.m.d H:i' }}</p>
-        </div>
-        <p class="mb-1">{{ answer.content }}</p>
-      </div>
-      {% if not forloop.last %}
-        <hr>
+    {# 답변 #}
+    <div class="px-5 py-2 answer-box">
+      {% if answers %}
+        {% for answer in answers %}
+          <div class="my-3">
+            <div class="d-flex w-100">
+              <p class="m-0"><span class="badge btn-navy mb-1">관리자</span> {{ answer.created_at|date:'Y.m.d H:i' }}</p>
+            </div>
+            <p class="mb-1">{{ answer.content }}</p>
+          </div>
+          {% if not forloop.last %}
+            <hr>
+          {% endif %}
+        {% endfor %}
+      {% else %}
+        <small>답변 대기중</small>
       {% endif %}
-    {% endfor %}
-  {% else %}
-    <small>답변 대기중</small>
-  {% endif %}
-</div>
+    </div>
 
-{# 답변 작성 폼 #}
-{% if request.user.is_authenticated %}
-  <div class="mt-3">
-    <form action="{% url 'board:answers_create' question.pk %}" method="POST">
-      {% csrf_token %}
-      <div class="input-group mb-3">
-        <textarea class="form-control" placeholder="댓글 작성" id="id_content" rows="3" name="content" required></textarea>
-        <button class="btn btn-outline-secondary">작성</button>
+    {# 답변 작성 폼 #}
+    {% if request.user.is_authenticated %}
+      <div class="mt-3">
+        <form action="{% url 'board:answers_create' question.pk %}" method="POST">
+          {% csrf_token %}
+          <div class="input-group mb-3">
+            <textarea class="form-control" placeholder="댓글 작성" id="id_content" rows="3" name="content" required></textarea>
+            <button class="btn btn-outline-secondary">작성</button>
+          </div>
+        </form>
       </div>
-    </form>
+    {% endif %}
+
+
+    {# 목록 버튼 #}
+    <div class="d-flex justify-content-center mt-5">
+      <a class="btn btn-sm btn-navy" href="{% url 'board:qna' %}" role="button">목록으로</a>
+    </div>
   </div>
-{% endif %}
-
-
-{# 목록 버튼 #}
-<div class="d-flex justify-content-center mt-5">
-  <a class="btn btn-navy" href="{% url 'board:qna' %}" role="button">목록</a>
 </div>
-
 {% endblock content %}

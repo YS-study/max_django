@@ -1,25 +1,27 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <div class="bg-light">
-    <h3 class="text-center">게시글 수정</h3>
-    <form action="" method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    {% for field in form %}
-      {% if field.errors %}
-        {% for error in field.errors %}
-          <div class="alert alert-warning" role="alert"><strong>{{ error|escape }}</strong></div>
-        {% endfor %}
-      {% endif %}
-      <div class="my-3">
-        {{ field.label_tag }}
-        {{ field }}
-      </div>
-    {% endfor %}
-    <br>
-    <input type="submit" value="수정" class="btn btn-sm btn-primary">
-    <a href="{% url 'machines:detail' machine.pk %}" class="btn btn-sm btn-secondary">취소</a>
-    <a href="{% url 'machines:index' %}" class="btn btn-sm btn-primary">목록으로</a>
-    </form>
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-10">
+      {% comment %} <h3 class="text-center">게시글 수정</h3> {% endcomment %}
+      <form action="" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      {% for field in form %}
+        {% if field.errors %}
+          {% for error in field.errors %}
+            <div class="alert alert-warning" role="alert"><strong>{{ error|escape }}</strong></div>
+          {% endfor %}
+        {% endif %}
+        <div class="my-3">
+          {{ field.label_tag }}
+          {{ field }}
+        </div>
+      {% endfor %}
+      <br>
+      <input type="submit" value="수정" class="btn btn-sm btn-navy me-2">
+      <a href="{% url 'machines:detail' machine.pk %}" class="btn btn-sm btn-secondary me-2">취소</a>
+      <a href="{% url 'machines:index' %}" class="btn btn-sm btn-navy">목록으로</a>
+      </form>
+    </div>
   </div>
 {% endblock content %}
