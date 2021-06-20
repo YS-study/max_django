@@ -130,6 +130,11 @@ footer {
   color: #111f73;  
 }
 
+.badge-navy {
+  color: white;
+  background-color: #111f73;
+}
+
 .btn-minus-margin {
   margin-top: -38px;
 }

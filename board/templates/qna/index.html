@@ -20,7 +20,7 @@
           {% if question.answer_set.count %}
             <span class="badge bg-secondary">답변 완료</span>
           {% else %}
-           <span class="badge btn-navy">답변 대기</span>
+           <span class="badge badge-navy">답변 대기</span>
           {% endif %}
         </td>
         <td class='text-center lightgrey-text'>{{ question.created_at|date:'Y.m.d' }}</td>
