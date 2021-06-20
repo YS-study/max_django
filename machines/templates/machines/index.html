@@ -20,7 +20,7 @@
       <div class="d-flex flex-column py-3 gy-4">
         <div class="d-flex justify-content-center bg-light machine-thumb">
           <a href="{% url 'machines:detail' machine.pk %}">
-            <img src="{{ machine.photo.url }}" alt="img" class="rounded" height="200">
+            <img src="{{ machine.photo_thumbnail.url }}" alt="img" class="rounded" height="200">
           </a>
         </div>
         <a href="{% url 'machines:detail' machine.pk %}" class="text-decoration-none bg-light">

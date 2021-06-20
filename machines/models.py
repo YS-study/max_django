@@ -1,7 +1,8 @@
 from django.db import models
 from django.conf import settings
 from imagekit.models import ProcessedImageField
-from imagekit.processors import Thumbnail
+from imagekit.models import ImageSpecField
+from imagekit.processors import ResizeToFill
 
 def machines_image_path(instance, filename):
     return f'user_{instance.user.pk}/{filename}'
@@ -21,11 +22,14 @@ class Machine(models.Model):
     category = models.CharField(max_length=20, choices=PICKS, default = '')    
     photo = ProcessedImageField(
         blank=True,
-        # processors=[Thumbnail(200, 200)],
         format='jpeg',
         options={'quality': 100},
         upload_to='%Y/%m/%d/'
     )
+    photo_thumbnail = ImageSpecField(source='photo',
+        processors=[ResizeToFill(400, 300)],
+        format='JPEG',
+        options={'quality': 60})
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
