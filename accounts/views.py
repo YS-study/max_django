@@ -18,7 +18,7 @@ def login(request):
         form = AuthenticationForm()
     context = {
         'form': form,
-        'menu': 'login'
+        'menu': '로그인'
     }
     return render(request, 'accounts/login.html', context)
 

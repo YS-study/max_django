@@ -41,7 +41,7 @@
     <p class="m-0">사업장주소: 경기도 광주시 곤지암읍 경충대로 811-70 맥스목공기계 (삼리 145)</p>
     <p class="m-0">본 사이트의 콘텐츠는 저작권법의 보호를 받는 바 무단 전재, 복사, 배포 등을 금합니다.</p>
     <div class="m-0 d-flex">
-      <a href="{% url 'accounts:login' %}" class="text-decoration-none lightgrey-text">Copyright ©</a>맥스목공기계 All Rights Reserved.
+      <a href="{% url 'accounts:login' %}" class="text-decoration-none lightgrey-text">Copyright</a>© 맥스목공기계 All Rights Reserved.
       {% if request.user.is_authenticated %}
       <form action="{% url 'accounts:logout' %}" method="POST">
         {% csrf_token %}
