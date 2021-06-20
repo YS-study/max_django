@@ -8,6 +8,7 @@
     <tr>
       <th scope="col" class='text-center darkgrey-text'>번호</th>
       <th scope="col" class='text-center darkgrey-text'>제목</th>
+      <th scope="col" class='text-center darkgrey-text'>작성자</th>
       <th scope="col" class='text-center darkgrey-text'>등록일</th>
     </tr>
   </thead>
@@ -23,6 +24,7 @@
            <span class="badge badge-navy">답변 대기</span>
           {% endif %}
         </td>
+        <td class='text-center lightgrey-text'>{{ question.name }}</td>
         <td class='text-center lightgrey-text'>{{ question.created_at|date:'Y.m.d' }}</td>
       </tr>
     {% endfor %}

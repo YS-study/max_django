@@ -164,8 +164,10 @@ def qna_update(request, pk):
 @require_POST
 def qna_delete(request, pk):
     question = get_object_or_404(Question, pk=pk)
-    question.delete()
-    return redirect('board:qna')
+    if question.password == request.POST:
+        question.delete()
+        return redirect('board:qna')
+    return redirect('board:qna_detail', question.pk)
 
 
 
