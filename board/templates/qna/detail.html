@@ -1,17 +1,47 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
 <div class="row justify-content-center">
   <div class="col-12 col-lg-10">
     {# title #}
     <div class="d-flex justify-content-between title-box px-4 py-2">
-      <h2>{{question.title}}</h2>
-      <small>{{ post.created_at|date:'Y.m.d H:i' }}</small>
+      <div>
+        <h2>{{question.title}}</h2>
+        <p class="m-0">{{question.name}}</p>
+      </div>
+      <small>{{ question.created_at|date:'Y.m.d H:i' }}</small>
+    </div>
+
+    {# 수정 삭제 버튼 #}
+    <div class="d-flex justify-content-end pe-4 pt-2">
+      <a class="badge btn-navy me-2 text-decoration-none">수정</a>
+      <a class="badge bg-secondary me-2 text-decoration-none" data-bs-toggle="modal" data-bs-target="#deletemodal">삭제</a>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="deletemodal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">게시글 삭제</h5>
+            <button class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <p>게시글을 삭제하시겠습니까?</p>
+            <form action="{% url 'board:qna_delete' question.pk %}" method="POST">
+              {% csrf_token %}
+              <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="비밀번호 입력">
+                <button class="btn btn-outline-secondary">삭제</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
 
     {# content #}
-    <div class='p-5'>
+    <div class='p-5 pt-4'>
       <p class='m-0'>
         {{question.content}}
       </p>
