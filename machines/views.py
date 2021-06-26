@@ -4,10 +4,18 @@ from django.views.decorators.http import require_safe, require_http_methods, req
 from .models import Machine
 from .forms import MachineForm
 
+import os
+import sys
+sys.path.insert(0, os.path.abspath('..'))
+
+from board.models import Post
+
 def main(request):
     machines = Machine.objects.order_by('-pk')[:4]
+    posts = Post.objects.order_by('-pk')
     context = {
         'machines': machines,
+        'posts': posts,
         'menu': '목공기계',
     }
     return render(request, 'machines/main.html', context)
