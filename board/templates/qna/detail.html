@@ -43,7 +43,7 @@
     {# content #}
     <div class='p-5 pt-4'>
       <p class='m-0'>
-        {{question.content}}
+        {{ question.content|linebreaks }}
       </p>
     </div>
 
@@ -55,7 +55,7 @@
             <div class="d-flex w-100">
               <p class="m-0"><span class="badge badge-navy mb-1">관리자</span> {{ answer.created_at|date:'Y.m.d H:i' }}</p>
             </div>
-            <p class="mb-1">{{ answer.content }}</p>
+            <p class="mb-1">{{ answer.content|linebreaks }}</p>
           </div>
           {% if not forloop.last %}
             <hr>
