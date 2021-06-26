@@ -5,6 +5,7 @@ from .forms import PostForm, QuestionForm, AnswerForm
 from django.views.decorators.http import require_safe, require_http_methods, require_POST
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
+from django.contrib.auth.hashers import make_password, check_password
 
 # 메인
 def notice(request):
@@ -118,7 +119,10 @@ def qna_create(request):
     if request.method == 'POST':
         form = QuestionForm(request.POST)
         if form.is_valid():
-            question = form.save()
+            question = form.save(commit=False)
+            post_password = request.POST.get("password", None)
+            question.password = make_password(post_password)
+            question.save()
             return redirect('board:qna_detail', question.pk)
     else:
         form = QuestionForm()
@@ -146,8 +150,9 @@ def qna_detail(request, pk):
 @require_http_methods(['GET', 'POST'])
 def qna_update(request, pk):
     question = get_object_or_404(Question, pk=pk)
+    post_password = request.POST.get("password", None)
     if request.method == 'POST':
-        if question.password != request.POST.get("password", None):
+        if check_password(question.password, post_password):
             return redirect('board:qna_detail', question.pk)
 
         form = QuestionForm(request.POST, instance=question)
