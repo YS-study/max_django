@@ -12,7 +12,7 @@ from board.models import Post
 
 def main(request):
     machines = Machine.objects.order_by('-pk')[:4]
-    posts = Post.objects.order_by('-pk')
+    posts = Post.objects.order_by('-pk')[:4]
     context = {
         'machines': machines,
         'posts': posts,
