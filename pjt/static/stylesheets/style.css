@@ -36,7 +36,7 @@ footer {
 .menu-box {
   font-family: 'ONE-Mobile-Title';
   padding: 100px 0px;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("../image/menu_image.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.6)), url("../image/menu_image.jpg");
   background-position: center center;
   color: white;
 }
@@ -86,8 +86,10 @@ footer {
 
 /* 메인 배너 */
 .banner {
-  background-color: #ccc;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url("../image/main_banner.jpg");
+  background-size: cover;
   height: 500px;
+  color: #eee
 }
 
 
