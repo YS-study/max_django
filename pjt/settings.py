@@ -21,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-8!04924r26v&4(g^d$+(^%5l6+r4!0xolpm&9vt)b3toiog)vq'
+SECRET_KEY = config("SECRET_KEY")
 
 # 네이버 맵 API KEY
 NAVER_MAP_API_KEY = config("NAVER_MAP_API_KEY")
