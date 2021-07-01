@@ -27,12 +27,8 @@ class Machine(models.Model):
         upload_to='%Y/%m/%d/'
     )
     photo_thumbnail = ImageSpecField(source='photo',
-        processors=[ResizeToFill(300, 200)],
+        processors=[ResizeToFill(300, 300)],
         format='JPEG',
-        options={'quality': 100})
+        options={'quality': 75})
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-
-
-
-
